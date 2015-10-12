@@ -1,13 +1,28 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {% stylesheets
+    '@AppBundle/Resources/public/css/*.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="ads">
+        <pr-slider ads="{% verbatim %}{{ main.loadedAds }}{% endverbatim %}"></pr-slider>
+    </div>
+{% endblock %}
 
 {% block javascripts %}
     {% javascripts
-        '@AppBundle/Resources/public/js/*'
-        '@AppBundle/Resources/public/js/lib/angular-ui-router/release/angular-ui-router.min.js'
-        '@AppBundle/Resources/public/js/controllers/*'
+    '@AppBundle/Resources/public/js/*'
+    '@AppBundle/Resources/public/js/lib/angular-ui-router/release/angular-ui-router.min.js'
+    '@AppBundle/Resources/public/js/controllers/*'
+    '@AppBundle/Resources/public/js/directives/prSlider/*.js'
     %}
-        <script src="{{ asset_url }}"></script>
+    <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
 

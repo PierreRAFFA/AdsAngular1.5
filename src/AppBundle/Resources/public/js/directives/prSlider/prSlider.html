@@ -1,0 +1,20 @@
+<div class="slider">
+
+    <div class="container">
+        <div class="scene" data-id="{{$index}}" ng-if="scene"
+             data-ng-repeat="scene in vm.scenes track by $index"
+             style="left:{{$index * 300}}px">
+
+            <img class="background" src="https://veads.veinteractive.com/{{scene.background}}">
+
+            <div class="fgImageContainer">
+                <img class="fgImage" src="https://veads.veinteractive.com/{{scene.fgimage}}">
+            </div>
+
+
+            <div class="name">{{scene.name}}</div>
+
+        </div>
+    </div>
+
+</div>
