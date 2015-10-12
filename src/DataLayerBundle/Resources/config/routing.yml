@@ -2,3 +2,8 @@ ads:
     type: rest
     prefix: /api/v1
     resource: DataLayerBundle:Ad
+
+trackers:
+    type: rest
+    prefix: /api/v1
+    resource: DataLayerBundle:Tracker

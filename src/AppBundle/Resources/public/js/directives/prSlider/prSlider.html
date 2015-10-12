@@ -4,7 +4,7 @@
         <div class="scene" data-id="{{$index}}"
              data-ng-repeat="scene in vm.scenes track by $index"
              data-ng-init="$last ? vm.launchAnimation() : angular.noop()"
-             style="left:{{$index * 300}}px">
+             data-ng-click="vm.trackClick($event)" style="left:{{$index * 300}}px">
 
             <img class="background" src="https://veads.veinteractive.com/{{scene.background}}">
 

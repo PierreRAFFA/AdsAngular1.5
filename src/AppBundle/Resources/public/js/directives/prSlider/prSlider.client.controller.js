@@ -70,7 +70,7 @@ angular.module('AdApp').controller('PRSliderController', [ '$scope', '$element',
             var headline = scene.headline;
 
             var parts = headline.split('|');
-            for(var i = 0 ; i < parts.length - 1; i+=2)
+            for( var i = 0 ; i < parts.length - 1; i+=2 )
             {
                 var part = parts[i];
                 if ( part === 'name')
@@ -101,8 +101,25 @@ angular.module('AdApp').controller('PRSliderController', [ '$scope', '$element',
             $containerHtml.css('left' , -(this.currentSceneIndex * 300) + 'px');
         };
 
-        return new PRSliderController();
+        ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////  TRACK
+        PRSliderController.prototype.trackClick = function(event)
+        {
+            //There is no id for the ad, so I take the index even if it's not correct
+            var $target = $(event.currentTarget);
 
+            var id = $target.attr('data-id');
+
+            var url = '/api/v1/trackingclicks?adId=' + id;
+            $.ajax({
+                method: "POST",
+                url: url
+            }).done(function( msg ) {
+                alert( "Data Saved: " + msg );
+            });
+        };
+
+        return new PRSliderController();
     }
 ]);
 

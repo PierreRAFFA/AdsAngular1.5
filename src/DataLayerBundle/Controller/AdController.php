@@ -22,6 +22,8 @@ class AdController extends Controller
      */
     public function getAdsAction(Request $request, $slug)
     {
+        $session = $request->getSession();
+
         //compute url
         $url = sprintf(self::VEADS_BASE_URL, $slug);
 
@@ -41,6 +43,18 @@ class AdController extends Controller
         {
             $json = json_encode($xml);
             $json = json_decode($json);
+
+
+            //filter by clickTracking
+            if ( $session->has('trackedId'))
+            {
+                //Here id is an index, that's why I use splice.
+                //We should have an id per ad.
+                $adId = $session->get('trackedId');
+                $this->get('logger')->info('OOOOOO:'.$adId);
+//                $json->scenes->scene = array_splice($json->scenes->scene , $adId , 1);
+            }
+            ////////////////////////
 
             return new Response(json_encode($json) , 200);
 
