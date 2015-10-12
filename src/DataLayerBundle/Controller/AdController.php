@@ -26,7 +26,7 @@ class AdController extends Controller
         $url = sprintf(self::VEADS_BASE_URL, $slug);
 
         $this->get('logger')->info($url);
-        
+
         //download ads xml
         $contents = file_get_contents($url);
 

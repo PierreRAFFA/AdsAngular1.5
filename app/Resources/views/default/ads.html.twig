@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+
+{% block javascripts %}
+    {% javascripts
+        '@AppBundle/Resources/public/js/*'
+        '@AppBundle/Resources/public/js/lib/angular-ui-router/release/angular-ui-router.min.js'
+        '@AppBundle/Resources/public/js/controllers/*'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+

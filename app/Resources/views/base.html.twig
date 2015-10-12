@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="AdApp">
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -10,7 +10,7 @@
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
     </head>
-    <body>
+    <body  class="ng-cloak" data-ng-controller="MainController as main">
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
