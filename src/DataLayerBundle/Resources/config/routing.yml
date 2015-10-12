@@ -1,0 +1,4 @@
+ads:
+    type: rest
+    prefix: /api/v1
+    resource: DataLayerBundle:Ad

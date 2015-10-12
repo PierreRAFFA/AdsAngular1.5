@@ -1,0 +1,7 @@
+data_layer:
+    resource: "@DataLayerBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
