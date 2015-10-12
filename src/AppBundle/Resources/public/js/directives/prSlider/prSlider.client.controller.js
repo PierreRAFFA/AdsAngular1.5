@@ -25,9 +25,15 @@ angular.module('AdApp').controller('PRSliderController', [ '$scope', '$element',
              */
             this.scenes = [];
 
+            /**
+             *
+             * @type {number}
+             */
+            this.currentSceneIndex = -1;
+
         };
         PRSliderController.MAX_ADS_DISPLAYED = 3;
-        PRSliderController.ANIMATION_DURATION = 2000;
+        PRSliderController.ANIMATION_DURATION = 3000;
         ///////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////  DISPLAY ADS
         PRSliderController.prototype.displayAds = function()
@@ -70,6 +76,29 @@ angular.module('AdApp').controller('PRSliderController', [ '$scope', '$element',
                 if ( part === 'name')
                     scene[part] = parts[i+1];
             }
+        };
+        ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////  ANIMATION
+        PRSliderController.prototype.launchAnimation = function()
+        {
+            var self = this;
+
+            setInterval(function()
+            {
+                self.next();
+
+            } , PRSliderController.ANIMATION_DURATION);
+        };
+
+        PRSliderController.prototype.next = function()
+        {
+            this.currentSceneIndex++;
+
+            if ( this.currentSceneIndex >= this.scenes.length)
+                this.currentSceneIndex = 0;
+
+            var $containerHtml = $(this.$element).find('.container');
+            $containerHtml.css('left' , -(this.currentSceneIndex * 300) + 'px');
         };
 
         return new PRSliderController();
