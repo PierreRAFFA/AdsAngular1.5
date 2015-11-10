@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="scene" data-id="{{$index}}"
-             data-ng-repeat="scene in vm.scenes track by $index"
+             data-ng-repeat="scene in vm.ads.scenes.scene track by $index"
              data-ng-init="$last ? vm.launchAnimation() : angular.noop()"
              data-ng-click="vm.trackClick($event)" style="left:{{$index * 300}}px">
 
